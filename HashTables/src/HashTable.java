@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HashTable {
@@ -10,9 +11,18 @@ public class HashTable {
         size = 0;
     }
 
+    public void addSize(int newIndex) {
+        for (int i = 0; i <= newIndex; i++) {
+            if (values.size() <= newIndex && i >= values.size()) {
+                values.add(i,"");
+            }
+        }
+    }
+
     //put hashes the key to an index in your array, and places the value there. Fails if there are collisions/repeat keys.
     public boolean put(String key, String value){
         int index = hashCode(key);
+        addSize(index);
         if (!values.get(index).equals("")) {
             return false;
         }
