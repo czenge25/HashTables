@@ -1,10 +1,16 @@
+/*
+CZ
+12/4/23
+HK
+ */
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HashTable {
 
-    ArrayList<String> values;;
-    int size;
+    private ArrayList<String> values;
+    protected int size;
 
     public HashTable() {
         values = new ArrayList<String>();
@@ -44,12 +50,12 @@ public class HashTable {
     }
 
     //returns the unique int in the range of the [0, array length)
-    private int hashCode(String key) {
+    protected int hashCode(String key) {
         StringBuilder output = new StringBuilder();
         int sum = 0;
         int val = (int)'0';
         for (int i = 0; i < key.length(); i++) {
-            int num = ((int)key.charAt(i) - val) % 997;
+            int num = ((int)key.charAt(i) - val) % 491;
             sum += num;
             System.out.println(num);
             output.append(num);
@@ -57,5 +63,4 @@ public class HashTable {
         System.out.println("Total: " + sum);
         return Integer.parseInt(output.toString());
     }
-
 }
